@@ -255,10 +255,10 @@ export default function Contact() {
                   <div>
                     <h3 className="font-bold text-lg mb-1">Email</h3>
                     <a
-                      href="mailto:contact@acestudiosus.com"
+                      href="mailto:contact@acestudiosuk.com"
                       className="text-foreground/70 hover:text-accent transition-colors"
                     >
-                      contact@acestudiosus.com
+                      contact@acestudiosuk.com
                     </a>
                     <p className="text-sm text-foreground/60 mt-1">We typically reply within 24 hours</p>
                   </div>

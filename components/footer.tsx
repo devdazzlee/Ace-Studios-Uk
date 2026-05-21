@@ -20,7 +20,7 @@ import {
   CheckCircle2Icon,
 } from 'lucide-react'
 
-const CONTACT_EMAIL = 'contact@acestudiosus.com'
+const CONTACT_EMAIL = 'contact@acestudiosuk.com'
 
 const containerVariants = {
   hidden: { opacity: 0 },

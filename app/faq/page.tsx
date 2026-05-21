@@ -681,8 +681,8 @@ export default function FAQPage() {
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 text-sm">
                   <div className="flex items-center gap-2.5 text-white/80">
                     <MailIcon className="size-5 text-accent" />
-                    <a href="mailto:contact@acestudiosus.com" className="hover:text-accent font-semibold transition-colors">
-                      contact@acestudiosus.com
+                    <a href="mailto:contact@acestudiosuk.com" className="hover:text-accent font-semibold transition-colors">
+                      contact@acestudiosuk.com
                     </a>
                   </div>
                   <div className="flex items-center gap-2.5 text-white/80">
