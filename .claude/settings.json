@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const l = require\\('lucide-react'\\); ['PenToolIcon','PaintbrushIcon','LineChartIcon','LayoutGridIcon','LayoutDashboardIcon','GitBranchIcon','GaugeIcon','CpuIcon','BellIcon','VideoIcon','ListIcon','TagIcon','EyeIcon','ScaleIcon','FileTextIcon','BuildingIcon','ShoppingBagIcon','Share2Icon','MailIcon','TargetIcon','BarChartIcon','StoreIcon','PlayCircleIcon','PackageIcon','MegaphoneIcon','DatabaseIcon','SmartphoneIcon','PaletteIcon','TruckIcon','CreditCardIcon','GlobeIcon','BrainIcon','CompassIcon','CalendarIcon','HandshakeIcon'].forEach\\(n => console.log\\(n, typeof l[n]\\)\\)\")",
+      "Bash(npx tsc *)",
+      "Bash(node -e \"const l = require\\('lucide-react'\\); ['ShirtIcon','TreesIcon','SmartphoneIcon','SparklesIcon','CodeIcon','HeartIcon'].forEach\\(n => console.log\\(n, typeof l[n]\\)\\)\")",
+      "Bash(mkdir -p \"c:\\\\Users\\\\Lenovo\\\\Downloads\\\\ace-studios-website\\\\app\\\\work\\\\[slug]\")",
+      "Bash(node -e \"const l = require\\('lucide-react'\\); ['LayersIcon','ArrowUpRightIcon','ArrowLeftIcon'].forEach\\(n => console.log\\(n, typeof l[n]\\)\\)\")",
+      "Bash(mkdir -p \"c:\\\\Users\\\\Lenovo\\\\Downloads\\\\ace-studios-website\\\\app\\\\blog\\\\[slug]\")",
+      "Bash(node -e \"const l = require\\('lucide-react'\\); ['ClockIcon','BookmarkIcon','TwitterIcon','LinkedinIcon','FacebookIcon','ShareIcon'].forEach\\(n => console.log\\(n, typeof l[n]\\)\\)\")",
+      "PowerShell($utf8NoBom = New-Object System.Text.UTF8Encoding\\($false\\); $files = @\\('app\\\\blog\\\\[slug]\\\\page.tsx','app\\\\work\\\\[slug]\\\\page.tsx'\\); foreach \\($file in $files\\) { $path = \\(Get-Item -LiteralPath $file\\).FullName; $content = [System.IO.File]::ReadAllText\\($path, [System.Text.Encoding]::UTF8\\); $before = \\([regex]::Matches\\($content, '—'\\)\\).Count; $content = $content -replace ' — ', ', '; $content = $content -replace '—', ', '; [System.IO.File]::WriteAllText\\($path, $content, $utf8NoBom\\); Write-Output \"$file : $before\" })",
+      "Bash(npm install *)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/resend/package.json'\\).version\\)\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Lenovo\\Downloads\\ace-studios-website\\app\\work",
+      "c:\\Users\\Lenovo\\Downloads\\ace-studios-website\\app\\blog"
+    ]
+  }
+}
