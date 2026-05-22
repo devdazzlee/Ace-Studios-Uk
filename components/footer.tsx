@@ -360,10 +360,10 @@ export function Footer() {
                 <li className="flex gap-3">
                   <PhoneIcon size={18} className="text-accent flex-shrink-0 mt-0.5" />
                   <a
-                    href="tel:+17373945403"
+                    href="tel:+447366488595"
                     className="text-white/55 hover:text-white transition-colors text-sm"
                   >
-                    +1 (737) 394-5403
+                    07366 488595
                   </a>
                 </li>
                 <li className="flex gap-3">

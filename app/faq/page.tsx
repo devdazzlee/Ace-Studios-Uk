@@ -687,7 +687,7 @@ export default function FAQPage() {
                   </div>
                   <div className="flex items-center gap-2.5 text-white/80">
                     <PhoneIcon className="size-5 text-accent" />
-                    <span className="font-semibold">+1 (737) 394-5403</span>
+                    <span className="font-semibold">07366 488595</span>
                   </div>
                 </div>
               </div>

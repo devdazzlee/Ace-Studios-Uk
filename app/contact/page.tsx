@@ -164,7 +164,7 @@ export default function Contact() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+1 (737) 394-5403"
+                        placeholder="07366 488595"
                         className="bg-white dark:bg-card"
                       />
                     </div>
@@ -277,7 +277,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-bold text-lg mb-1">Phone</h3>
-                    <p className="text-foreground/70">+1 (737) 394-5403</p>
+                    <p className="text-foreground/70">07366 488595</p>
                     <p className="text-sm text-foreground/60 mt-1">Mon-Fri 9AM-6PM GMT</p>
                   </div>
                 </motion.div>
