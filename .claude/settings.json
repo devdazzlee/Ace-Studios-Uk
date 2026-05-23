@@ -15,7 +15,18 @@
       "Bash(cp \"app/work/[slug]/page.tsx\" \"app/work/[slug]/work-detail-client.tsx\")",
       "Bash(npm run *)",
       "Read(//c/Users/Lenovo/Downloads/**)",
-      "Bash(node -e \"try{console.log\\(require\\('./node_modules/axios/package.json'\\).version\\)}catch\\(e\\){console.log\\('not installed'\\)}\")"
+      "Bash(node -e \"try{console.log\\(require\\('./node_modules/axios/package.json'\\).version\\)}catch\\(e\\){console.log\\('not installed'\\)}\")",
+      "Bash(curl -s -w \"\\\\nHTTP %{http_code}\\\\n\" http://localhost:3001/)",
+      "Bash(curl -s -w \"\\\\nHTTP %{http_code}\\\\n\" -X POST http://localhost:3001/api/send -H \"Content-Type: application/json\" -d '{\"type\":\"subscribe\",\"email\":\"test-subscribe@example.com\",\"source\":\"backend-test\"}')",
+      "Bash(curl -s -w \"\\\\nHTTP %{http_code}\\\\n\" -X POST http://localhost:3001/api/send -H \"Content-Type: application/json\" -d '{\"type\":\"question\",\"name\":\"Backend Test\",\"email\":\"test-question@example.com\",\"question\":\"This is a test question from backend endpoint test.\"}')",
+      "Bash(curl -s -w \"\\\\nHTTP %{http_code}\\\\n\" -X POST http://localhost:3001/api/send -H \"Content-Type: application/json\" -d '{\"type\":\"contact\",\"name\":\"Backend Test\",\"email\":\"test-contact@example.com\",\"phone\":\"07366 488595\",\"company\":\"Test Co\",\"service\":\"Web Development\",\"message\":\"This is a test contact form submission from the backend endpoint test.\"}')",
+      "Bash(curl -s -w \"\\\\nHTTP %{http_code}\\\\n\" -X POST http://localhost:3001/api/send -H \"Content-Type: application/json\" -d '{\"type\":\"foo\"}')",
+      "Bash(curl -s -w \"\\\\nHTTP %{http_code}\\\\n\" -X POST http://localhost:3001/api/send -H \"Content-Type: application/json\" -d '{\"type\":\"contact\",\"name\":\"Only Name\"}')",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" -X OPTIONS http://localhost:3001/api/send -H \"Origin: https://acestudiosuk.com\" -H \"Access-Control-Request-Method: POST\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" -X OPTIONS http://localhost:3001/api/send -H \"Origin: http://localhost:3000\" -H \"Access-Control-Request-Method: POST\")",
+      "Bash(curl -s -w \"\\\\nHTTP %{http_code}\\\\n\" -X OPTIONS http://localhost:3001/api/send -H \"Origin: https://evil.example.com\" -H \"Access-Control-Request-Method: POST\")",
+      "Bash(curl -s -I -X OPTIONS http://localhost:3001/api/send -H \"Origin: https://acestudiosuk.com\" -H \"Access-Control-Request-Method: POST\")",
+      "Bash(curl -s -I -X OPTIONS http://localhost:3001/api/send -H \"Origin: https://evil.example.com\" -H \"Access-Control-Request-Method: POST\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\Lenovo\\Downloads\\ace-studios-website\\app\\work",

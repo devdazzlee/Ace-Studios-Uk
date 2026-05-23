@@ -8,7 +8,23 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 const TO = process.env.CONTACT_RECIPIENT || 'radiantcortex@gmail.com'
 const FROM = process.env.MAIL_FROM || 'Ace Studios <noreply@acestudiosuk.com>'
 
-app.use(cors({ origin: true, credentials: false }))
+const ALLOWED_ORIGINS = [
+  'https://acestudiosuk.com',
+  'https://www.acestudiosuk.com',
+  'http://localhost:3000',
+]
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // allow non-browser tools (curl, server-to-server) with no Origin header
+      if (!origin) return callback(null, true)
+      if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true)
+      return callback(new Error(`Origin ${origin} not allowed by CORS`))
+    },
+    credentials: false,
+  })
+)
 app.use(express.json({ limit: '256kb' }))
 
 function esc(v) {
