@@ -10,7 +10,12 @@
       "Bash(node -e \"const l = require\\('lucide-react'\\); ['ClockIcon','BookmarkIcon','TwitterIcon','LinkedinIcon','FacebookIcon','ShareIcon'].forEach\\(n => console.log\\(n, typeof l[n]\\)\\)\")",
       "PowerShell($utf8NoBom = New-Object System.Text.UTF8Encoding\\($false\\); $files = @\\('app\\\\blog\\\\[slug]\\\\page.tsx','app\\\\work\\\\[slug]\\\\page.tsx'\\); foreach \\($file in $files\\) { $path = \\(Get-Item -LiteralPath $file\\).FullName; $content = [System.IO.File]::ReadAllText\\($path, [System.Text.Encoding]::UTF8\\); $before = \\([regex]::Matches\\($content, '—'\\)\\).Count; $content = $content -replace ' — ', ', '; $content = $content -replace '—', ', '; [System.IO.File]::WriteAllText\\($path, $content, $utf8NoBom\\); Write-Output \"$file : $before\" })",
       "Bash(npm install *)",
-      "Bash(node -e \"console.log\\(require\\('./node_modules/resend/package.json'\\).version\\)\")"
+      "Bash(node -e \"console.log\\(require\\('./node_modules/resend/package.json'\\).version\\)\")",
+      "Bash(cp \"app/blog/[slug]/page.tsx\" \"app/blog/[slug]/blog-post-client.tsx\")",
+      "Bash(cp \"app/work/[slug]/page.tsx\" \"app/work/[slug]/work-detail-client.tsx\")",
+      "Bash(npm run *)",
+      "Read(//c/Users/Lenovo/Downloads/**)",
+      "Bash(node -e \"try{console.log\\(require\\('./node_modules/axios/package.json'\\).version\\)}catch\\(e\\){console.log\\('not installed'\\)}\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\Lenovo\\Downloads\\ace-studios-website\\app\\work",
