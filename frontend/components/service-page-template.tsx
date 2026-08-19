@@ -20,6 +20,7 @@ import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { AnimatedSection } from '@/components/animated-section'
 import { PageCTA } from '@/components/page-cta'
+import { getRelatedServices } from '@/lib/services-nav-data'
 import {
   CheckCircle2Icon,
   ArrowRightIcon,
@@ -73,6 +74,7 @@ export interface ServiceStat {
 }
 
 export interface ServicePageProps {
+  slug: string
   badge: string
   title: string
   titleAccent: string
@@ -82,6 +84,7 @@ export interface ServicePageProps {
   heroBullets?: string[]
   primaryCTA?: string
   secondaryCTA?: string
+  secondaryCTAHref?: string
   stats?: ServiceStat[]
   featuresHeading?: string
   featuresSubheading?: string
@@ -202,6 +205,7 @@ function ParallaxOrb({
 
 export function ServicePageTemplate(props: ServicePageProps) {
   const {
+    slug,
     badge,
     title,
     titleAccent,
@@ -211,6 +215,7 @@ export function ServicePageTemplate(props: ServicePageProps) {
     heroBullets = ['Free consultation', 'Custom solutions', 'ROI focused'],
     primaryCTA = 'Start Your Project',
     secondaryCTA = 'View Portfolio',
+    secondaryCTAHref = '/work/',
     stats,
     featuresHeading = 'What you get',
     featuresSubheading = 'A complete solution, end to end.',
@@ -239,7 +244,7 @@ export function ServicePageTemplate(props: ServicePageProps) {
     target: heroRef,
     offset: ['start start', 'end start'],
   })
-  const heroY = useTransform(heroProgress, [0, 1], [0, 200])
+  const heroY = useTransform(heroProgress, [0, 1], [0, 30])
   const heroOpacity = useTransform(heroProgress, [0, 0.85], [1, 0])
 
   const { scrollYProgress: pageProgress } = useScroll()
@@ -247,8 +252,24 @@ export function ServicePageTemplate(props: ServicePageProps) {
 
   const [openFaq, setOpenFaq] = useState<number | null>(0)
 
+  const relatedServices = getRelatedServices(slug)
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  }
+
   return (
     <div className="min-h-screen bg-background overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-secondary via-accent to-secondary z-[60] origin-left"
         style={{ scaleX: progressScale }}
@@ -259,9 +280,9 @@ export function ServicePageTemplate(props: ServicePageProps) {
       {/* ============ HERO ============ */}
       <section
         ref={heroRef}
-        className="relative pt-28 pb-20 overflow-hidden"
+        className="relative pt-28 pb-20"
       >
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <ParallaxOrb color="rgba(80,96,208,0.3)" size={500} initialX="-10%" initialY="5%" strength={45} />
           <ParallaxOrb color="rgba(255,107,53,0.25)" size={420} initialX="65%" initialY="20%" strength={55} />
           <div
@@ -368,9 +389,11 @@ export function ServicePageTemplate(props: ServicePageProps) {
                   </Link>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                    {secondaryCTA}
-                  </Button>
+                  <Link href={secondaryCTAHref}>
+                    <Button size="lg" variant="outline" className="w-full sm:w-auto">
+                      {secondaryCTA}
+                    </Button>
+                  </Link>
                 </motion.div>
               </motion.div>
 
@@ -402,7 +425,7 @@ export function ServicePageTemplate(props: ServicePageProps) {
               >
                 <Image
                   src={heroImage}
-                  alt={title}
+                  alt={`${badge} services by Ace Studios`}
                   fill
                   className="object-cover"
                   priority
@@ -643,13 +666,13 @@ export function ServicePageTemplate(props: ServicePageProps) {
 
                 {i < process.length - 1 && (
                   <motion.div
-                    className="hidden lg:flex absolute top-1/2 -right-3 z-10 -translate-y-1/2"
+                    className="hidden lg:flex absolute top-1/2 left-[calc(100%+0.75rem)] z-10 -translate-y-1/2 -translate-x-1/2"
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.12 + 0.4 }}
                   >
-                    <ArrowRightIcon className="size-5 text-white/30" />
+                    <ArrowRightIcon className="size-5 text-white/40" />
                   </motion.div>
                 )}
               </motion.div>
@@ -923,6 +946,39 @@ export function ServicePageTemplate(props: ServicePageProps) {
           </div>
         </div>
       </AnimatedSection>
+
+      {relatedServices.length > 0 && (
+        <AnimatedSection className="py-20 sm:py-24 border-t border-border">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              className="text-center mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <Badge variant="secondary" className="mb-4">
+                Related Services
+              </Badge>
+              <h2 className="text-3xl sm:text-4xl font-bold text-primary">
+                Pairs well with {title.toLowerCase()} {titleAccent.toLowerCase()}.
+              </h2>
+            </motion.div>
+
+            <div className="grid sm:grid-cols-3 gap-5">
+              {relatedServices.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={service.href}
+                  className="group flex items-center justify-between gap-3 rounded-2xl border-2 border-border bg-white p-6 hover:border-secondary transition-colors"
+                >
+                  <span className="font-semibold text-primary">{service.label}</span>
+                  <ArrowRightIcon className="size-5 text-secondary shrink-0 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </AnimatedSection>
+      )}
 
       <PageCTA
         heading={ctaHeading}

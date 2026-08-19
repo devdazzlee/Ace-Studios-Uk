@@ -90,7 +90,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
     target: heroRef,
     offset: ['start start', 'end start'],
   })
-  const heroY = useTransform(heroProgress, [0, 1], [0, 250])
+  const heroY = useTransform(heroProgress, [0, 1], [0, 30])
   const heroOpacity = useTransform(heroProgress, [0, 0.85], [1, 0])
 
   const { scrollYProgress: pageProgress } = useScroll()
@@ -112,8 +112,8 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
       <Navbar />
 
       {/* ============ HERO ============ */}
-      <section ref={heroRef} className="relative pt-28 pb-12 overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      <section ref={heroRef} className="relative pt-28 pb-12">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <ParallaxOrb color="rgba(80,96,208,0.3)" size={500} initialX="-10%" initialY="5%" strength={45} />
           <ParallaxOrb color="rgba(255,107,53,0.25)" size={420} initialX="65%" initialY="20%" strength={55} />
         </div>

@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://acestudiosuk.com
+Sitemap: https://acestudiosuk.com/sitemap.xml

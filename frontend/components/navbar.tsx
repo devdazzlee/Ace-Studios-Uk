@@ -30,7 +30,7 @@ export function Navbar() {
     'text-sm text-primary-foreground/90 hover:text-accent transition-colors font-medium'
 
   return (
-    <nav className="sticky top-0 z-50 bg-primary border-b border-white/10 shadow-lg">
+    <nav className="sticky top-0 z-50 bg-[#12152e] border-b border-white/10 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -99,6 +99,9 @@ export function Navbar() {
               </AnimatePresence>
             </div>
 
+            <Link href="/work" className={navLinkClass}>
+              Work
+            </Link>
             <Link href="/blog" className={navLinkClass}>
               Blog
             </Link>
@@ -184,6 +187,9 @@ export function Navbar() {
                   </AnimatePresence>
                 </div>
 
+                <Link href="/work" className="block px-4 py-2 text-primary-foreground hover:bg-white/10 rounded-lg transition-colors">
+                  Work
+                </Link>
                 <Link href="/blog" className="block px-4 py-2 text-primary-foreground hover:bg-white/10 rounded-lg transition-colors">
                   Blog
                 </Link>

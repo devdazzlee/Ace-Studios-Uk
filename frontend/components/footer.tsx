@@ -16,7 +16,6 @@ import {
   PhoneIcon,
   MapPinIcon,
   ArrowRightIcon,
-  SparklesIcon,
   CheckCircle2Icon,
 } from 'lucide-react'
 import axios from 'axios'
@@ -137,14 +136,6 @@ export function Footer() {
             />
 
             <div className="relative rounded-2xl bg-[#141820]/90 backdrop-blur-xl border border-white/10 p-6 sm:p-8 md:p-10">
-              <motion.div
-                className="absolute top-4 right-4 text-white/10"
-                animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.1, 1] }}
-                transition={{ duration: 8, repeat: Infinity }}
-              >
-                <SparklesIcon className="size-12 sm:size-16" />
-              </motion.div>
-
               <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-center relative">
                 <div>
                   <motion.h3
