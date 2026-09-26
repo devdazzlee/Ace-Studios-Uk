@@ -4,7 +4,14 @@ const cors = require('cors')
 const { Resend } = require('resend')
 
 const app = express()
-const resend = new Resend(process.env.RESEND_API_KEY)
+let resend = null
+function getResend() {
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error('RESEND_API_KEY is not configured')
+  }
+  if (!resend) resend = new Resend(process.env.RESEND_API_KEY)
+  return resend
+}
 const TO = process.env.CONTACT_RECIPIENT || 'radiantcortex@gmail.com'
 const FROM = process.env.MAIL_FROM || 'Ace Studios <noreply@acestudiosuk.com>'
 
@@ -12,6 +19,8 @@ const ALLOWED_ORIGINS = [
   'https://acestudiosuk.com',
   'https://www.acestudiosuk.com',
   'http://localhost:3000',
+  'http://169.58.4.58:8083',
+  'http://169.58.4.58:3001',
 ]
 
 app.use(
@@ -105,7 +114,7 @@ app.post('/api/send', async (req, res) => {
       return res.status(400).json({ error: 'Invalid form type' })
     }
 
-    const { error } = await resend.emails.send({
+    const { error } = await getResend().emails.send({
       from: FROM,
       to: [TO],
       subject,
