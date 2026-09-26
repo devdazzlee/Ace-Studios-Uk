@@ -55,7 +55,7 @@ jobs:
             backend/ "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/ace-studios-uk/backend/"
           ssh -o StrictHostKeyChecking=yes \
             "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
-            'cd /var/www/ace-studios-uk/backend && npm install --omit=dev && systemctl restart ace-studios-uk-api && sleep 1 && systemctl is-active ace-studios-uk-api'
+            'cd /var/www/ace-studios-uk/backend && npm install --omit=dev && systemctl restart ace-studios-uk-api && for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15; do systemctl is-active --quiet ace-studios-uk-api && exit 0; sleep 1; done; systemctl --no-pager -l status ace-studios-uk-api; exit 1'
 
       - name: Fix frontend ownership
         run: |
