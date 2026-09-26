@@ -28,7 +28,7 @@ jobs:
         env:
           NEXT_PUBLIC_BACKEND_URL: https://acestudiosuk.com
         run: |
-          npm ci
+          npm install --no-audit --no-fund
           npx next build
 
       - name: Setup SSH
