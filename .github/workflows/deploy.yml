@@ -42,7 +42,7 @@ jobs:
       - name: Deploy frontend
         run: |
           rsync -az --delete \
-            -e "ssh -o IdentitiesOnly=yes" \
+            -e "ssh -o StrictHostKeyChecking=yes" \
             frontend/out/ "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/ace-studios-uk/website/"
 
       - name: Deploy backend
@@ -51,14 +51,14 @@ jobs:
             --exclude node_modules \
             --exclude .env \
             --exclude .git \
-            -e "ssh -o IdentitiesOnly=yes" \
+            -e "ssh -o StrictHostKeyChecking=yes" \
             backend/ "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/ace-studios-uk/backend/"
-          ssh -o IdentitiesOnly=yes \
+          ssh -o StrictHostKeyChecking=yes \
             "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
             'cd /var/www/ace-studios-uk/backend && npm install --omit=dev && systemctl restart ace-studios-uk-api && sleep 1 && systemctl is-active ace-studios-uk-api'
 
       - name: Fix frontend ownership
         run: |
-          ssh -o IdentitiesOnly=yes \
+          ssh -o StrictHostKeyChecking=yes \
             "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
             'chown -R www-data:www-data /var/www/ace-studios-uk/website'
